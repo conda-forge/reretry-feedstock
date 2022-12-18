@@ -1,13 +1,16 @@
 {% set name = "reretry" %}
-{% set version = "0.11.1" %}
+{% set version = "0.11.8" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
+# PyPI sdist URL would be:
+# https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+# It does not include the tests, so we use the GitHub source archive instead.
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/reretry-{{ version }}.tar.gz
-  sha256: 4ae1840ae9e443822bb70543c485bb9c45d1d009e32bd6809f2a9f2839149f5d
+  url: https://github.com/leshchenko1979/reretry/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz
+  sha256: c04be774e1c09ff4acbfc4de686e9a0f18e3ae1c6daabc852a65456f36d4272f
 
 build:
   noarch: python
@@ -17,7 +20,6 @@ build:
 requirements:
   host:
     - python >=3.6
-    - pbr
     - pip
   run:
     - python >=3.6
