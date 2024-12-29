@@ -15,14 +15,15 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
-    - python >=3.6
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -36,6 +37,7 @@ test:
     - pip
     - pytest
     - pytest-asyncio
+    - python {{ python_min }}
 
 about:
   home: https://github.com/leshchenko1979/reretry
